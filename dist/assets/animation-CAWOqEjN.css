@@ -1,1 +1,0 @@
-.name{opacity:0;transform:translate(-40px);transition:.4s ease}.logo:hover .name,body.home .logo .name{opacity:1;transform:translate(0)}body:not(.home) .logo .name{opacity:0;transform:translate(-40px)}body:not(.home) .logo:hover .name{opacity:1;transform:translate(0)}

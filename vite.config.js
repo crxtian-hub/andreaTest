@@ -12,8 +12,8 @@ const inputs = Object.fromEntries(
 
 export default defineConfig({
     root: pagesDir,
-    // Let Vite handle assets referenced from HTML/CSS/JS.
-    publicDir: false,
+    // Serve and copy /assets into /dist for static JS/CSS/images.
+    publicDir: resolve(__dirname, "assets"),
     build: {
         outDir: resolve(__dirname, "dist"),
         emptyOutDir: true,

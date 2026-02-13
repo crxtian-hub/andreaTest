@@ -1,0 +1,1294 @@
+/* .bodoni-moda {
+font-family: "Bodoni Moda", serif;
+font-weight: 400-900;
+} */
+
+@font-face {
+    font-family: "Radikal W03 UltraThin";
+    src: url("../../../assets/font/Radikal/Radikal W03 UltraThin/Radikal W03 UltraThin.woff2") format("woff2"),
+    url("../../../assets/font/Radikal/Radikal W03 UltraThin/Radikal W03 UltraThin.woff") format("woff");
+    font-weight: 200;
+    font-style: normal;
+    font-display: block;
+}
+
+@font-face {
+    font-family: "Radikal W03 Light";
+    src: url("../../../assets/font/Radikal/Radikal W03 Light/Radikal W03 Light.woff2") format("woff2"),
+    url("../../../assets/font/Radikal/Radikal W03 Light/Radikal W03 Light.woff") format("woff");
+    font-weight: 300;
+    font-style: normal;
+    font-display: block;
+}
+
+@font-face {
+    font-family: "Radikal W03 Regular";
+    src: url("../../../assets/font/Radikal/Radikal W03 Regular/Radikal W03 Regular.woff2") format("woff2"),
+    url("../../../assets/font/Radikal/Radikal W03 Regular/Radikal W03 Regular.woff") format("woff");
+    font-weight: 400;
+    font-style: normal;
+    font-display: block;
+}
+
+:root{
+    --bodoni: "Bodoni Moda", serif;
+    --rRegular:"Radikal W03 Regular";
+    --rLight:"Radikal W03 Light";
+    --rUltraThink:"Radikal W03 UltraThin";
+    --paddingBottom:50vh;
+    --top:13vw;
+    --gapPhotos: 1.36vw;
+}
+html, body{
+    height: 100%;
+    width: 100%;
+    border: 0;
+    margin: 0;
+    font-family: "Radikal W03 Light", sans-serif;
+    background-color: white;
+    scroll-behavior: smooth;
+    transition: background-color 0.4s ease;
+}
+body.home{
+    overflow: hidden;
+}
+html.portfolio-transition, body.portfolio-transition{
+    background-color: black;
+}
+html.has-smooth, html.has-smooth body{
+    height: 100%;
+    overflow: hidden;
+}
+#smooth-wrapper{
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    z-index: 1;
+}
+#smooth-content{
+    position: relative;
+    min-height: 100%;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+/* template grids */
+.grid {
+    display: grid;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    height: 100vh;
+    grid-template-columns: repeat(12, 6.18vw);   /* desktop */
+    grid-template-columns: repeat(4, 20vw);   /* mobile */
+    gap: 1.36vw;     /* desktop */
+    gap: 12px;     /* mobile */
+    z-index: 2;
+    pointer-events: none;
+}
+.grid > div {
+    background-color: rgba(215, 145, 145, 0.404);
+    height: 100%;
+}
+.grid-hidden {
+    display: none;
+}
+.grid-toggle-btn {
+    position: fixed;
+    left: 16px;
+    bottom: 16px;
+    z-index: 20;
+    padding: 8px 12px;
+    border: 1px solid rgba(0, 0, 0, 0.4);
+    background: rgba(255, 255, 255, 0.9);
+    font-family: var(--rLight);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+.grid-toggle-btn.is-off {
+    opacity: 1;
+}
+
+
+.loader{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    z-index: 1000;
+    display: none;
+}
+
+.hundred{
+    position: absolute;
+    bottom: 0;
+    left: 5.2vw;
+    font-size: 192px;
+    font-family: var(--rLight);
+    color: rgb(255, 255, 255);
+    mix-blend-mode: difference;
+}
+.bg {
+    position: absolute;
+    inset: 0;
+    background-color: white;
+    z-index: 0;
+    transform: translateY(-100%);
+    mix-blend-mode: difference;
+}
+
+/* first section */
+
+/* logo */
+
+.logo{
+    display: flex;
+    position: fixed;
+    left: 5.4vw;
+    top: 1.6vw;
+    z-index: 200;
+    width: 10.5vw;
+    height: 4vw;
+    mix-blend-mode: difference;
+    /* background-color: beige; */
+}
+/* Logo name animation base (home overrides to visible) */
+.logo .name{
+    opacity: 0;
+    transform: translate(-40px);
+    transition: .4s ease;
+}
+.logo:hover .name{
+    opacity: 1;
+    transform: translate(0px);
+}
+body.home .logo-link{
+    pointer-events: none;
+    cursor: default;
+}
+body.home .logo .name{
+    opacity: 1;
+    transform: translate(0px);
+}
+.logo-absolute .logo{
+    position: absolute !important;
+}
+.logoName{
+    font-family: "Radikal W03 Light", sans-serif;
+    font-size: 20px;
+    line-height: 60%;
+    transform: translate(1px);
+}
+.logoSurname{
+    font-size: 20px;
+}
+.logoRole{
+    font-family: "Radikal W03 Light", sans-serif;
+    text-transform:uppercase;
+    font-size: 9.8px;
+}
+
+
+
+
+/* navbar */
+nav{
+    position: fixed;
+    display: flex;
+    gap: 3vw;
+    transform: rotate(270deg) translateY(200%);
+    right: 0vw;
+    top: 50%;
+    border: 0;
+    font-size: 1.3vw;
+    z-index: 100;
+    mix-blend-mode: difference;
+    color: white;
+    line-height: 1;
+    overflow: hidden;
+    transition: opacity .2s ease;
+}
+nav.nav-rebuilding{
+    opacity: 0;
+    pointer-events: none;
+}
+nav a{
+    color: white;
+}
+nav a.nav-active{
+    font-family: var(--bodoni);
+    pointer-events: none;
+}
+body.home.loader-pending nav,
+body.home.loader-pending footer,
+body.home.loader-pending .logo-link,
+body.home.loader-active nav,
+body.home.loader-active footer,
+body.home.loader-active .logo-link{
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+body.home.loader-done nav,
+body.home.loader-done footer,
+body.home.loader-done .logo-link{
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+}
+body.home.loader-pending .loader,
+body.home.loader-active .loader{
+    display: block;
+    opacity: 1;
+    visibility: visible;
+}
+.backToTheTop{
+    mix-blend-mode: difference;
+    color: rgb(255, 255, 255);
+    position: fixed;
+    left: 5%;
+    bottom: -100px;
+    font-size: 1.7vw!important;
+    z-index: 3;
+    background: none;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    font: inherit;
+}
+.lang-switch{
+    cursor: pointer;
+    color: #ffffff32;
+}
+.lang-switch.active {
+    color: #ffffff;
+    opacity: 1;
+    pointer-events: none;
+}
+
+.rolling-text{
+    display: inline-block;
+    height: 1.3vw;
+    overflow: hidden;
+    color: white;
+}
+
+.rolling-text:hover .letter{
+    transform: translateY(-100%);
+}
+
+.rolling-text .block:last-child{
+    color: white;
+    font-family: var(--bodoni);
+}
+
+.rolling-text .letter{
+    display: inline-block;
+    transition: transform .6s cubic-bezier(0.76, 0, .24, 1);
+}
+
+.rolling-text.clicked .letter{
+    transform: translateY(-100%);
+}
+
+.rolling-text.rolling-exit .letter{
+    transform: translateY(0);
+}
+
+
+/* footer */
+
+footer{
+    display: flex;
+    position: fixed;
+    gap: 12.3vw;
+    bottom: 1.8vw;
+    right: 5.4vw;
+    z-index: 3;
+    mix-blend-mode: difference;
+    color: white;
+    font-size: 1.3vw;
+    justify-content: space-between;
+    width: 49vw;
+}
+.msResponsive{
+    display: flex;
+    gap: 11.8vw;
+}
+.hoverBottomText{
+    position: relative;
+    display: inline-block;
+}
+.socials span a,
+.socials span button{
+    text-decoration: none;
+    color: white;
+    mix-blend-mode: difference;
+    position: relative;
+}
+footer a,
+footer button{
+    mix-blend-mode: difference;
+    color: white;
+    position: relative;
+    background: none;
+    border: 0;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+}
+
+
+footer a::after,
+footer button::after,
+.hoverBottomText::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #ffffff;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+footer a:hover::after,
+footer button:hover::after,
+.hoverBottomText:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+} 
+
+
+
+.imgContainer{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    gap: var(--gapPhotos);
+    justify-content: center;
+    align-items: center;
+}
+body.home .home-content{
+    opacity: 0;
+}
+body.home.loader-done .home-content{
+    opacity: 1;
+}
+body.fonts-loading .hundred{
+    opacity: 0;
+}
+.wedding, .portfolio{
+    display: flex;
+    position: relative;
+}
+.wedding a, .portfolio a{
+    color: black;
+}
+
+.indexSpan{
+    position: absolute;
+    font-size:6.5vw;
+    opacity: 0;
+    transition: opacity .3s ease-in-out, bottom .5s ease-in-out;
+    transform: rotate(270deg);
+    color: rgb(0, 0, 0);
+}
+
+.portfolioSpan{
+    color: rgb(0, 0, 0);
+    right: -15.5vw;
+    bottom: 16vw;
+}
+.weddingSpan {
+    bottom: 11vw;
+    left: -17.5vw;
+    font-family: var(--bodoni);
+}
+.weddingImg, .portfolioImg {
+    object-fit: cover;
+    object-position: center center;
+    /* filter: grayscale(100%); */
+    cursor: pointer;
+    transition: .2s ease-in-out;
+    width: 28.8vw;
+    height: 35vw;
+    /* aspect-ratio: 413/520; */
+}
+.weddingImg:hover, .portfolioImg:hover {
+    /* filter: none; */
+}
+.weddingImg:hover ~ .weddingSpan {
+    opacity: 1; 
+    bottom: 7.8vw;
+}
+.portfolioImg:hover ~ .portfolioSpan {
+    opacity: 1;
+    bottom: 18.7vw;
+}
+
+
+
+
+/* wedding Section */
+.weddingSection{
+    position: relative;
+    height: fit-content;
+    width: 100%;
+}
+
+.title{
+    position: absolute;
+    right: 5.4vw;
+    font-family: var(--bodoni);
+    font-size: 6.5vw;
+    top: -2.45vw;
+    opacity: 0;
+    transform: translateY(-50px);
+}
+/* album */
+.albumContainer {
+    position: absolute;
+    display: flex;
+    gap:var(--gapPhotos);
+    row-gap: 4.3vw;
+    top: var(--top);
+    justify-content: flex-start;
+    align-items: start;
+    flex-wrap:wrap;
+    width: 89.1vw;
+    left: 5.45vw;
+}
+
+.album a{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: fit-content;
+    gap: 1.5vw;
+}
+
+.album .img, .album .albumImg, .album img {
+    width: 43.87vw;
+    height: 30vw;
+    /* transition: filter 0.3s ease; */
+    /* filter: grayscale(); */
+    background-size: 105%;
+}
+.album .albumImg{
+    overflow: hidden;
+}
+.album .albumImg.hasImg{
+    background-image: none;
+}
+.album .albumImg.hasImg img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transform: scale(1);
+}
+.album .albumImg:hover, .album .img:hover, .album img:hover{
+    /* filter: grayscale(0); */
+}
+
+
+.textContainerResponsive{
+    display: none;
+}
+
+.subText {
+    font-size: 1.65vw;
+    text-transform: uppercase;
+    line-height: 1.2;
+    font-family: var(--bodoni);
+    font-weight: 600;
+    color: black;
+}
+
+.subText div{
+    font-weight: 300;
+    color: black;
+}
+
+
+
+/* photos of the album wedding */
+.imagesSections{
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+
+.back{
+    position: absolute;
+    left: 6.5%;
+    top: 7.2vw;
+    font-size: 2.18vw;
+    font-family: var(--bodoni);
+    text-transform: uppercase;
+    font-weight: 400;
+    visibility: visible;
+    opacity: 1;
+    left: 5.4vw;
+}
+.back span{
+    font-weight: 600;
+}
+
+
+.singlePhotosGrid{
+    position: absolute;
+    width: 58.9vw;
+    right: 5.45vw;
+    top: 18.8vw;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.4vw;
+    visibility: visible;
+    opacity: 1;
+    transition: opacity .6s ease;
+}
+.singlePhotosGrid.is-loading{
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+}
+.singlePhotos{
+    width: 100%;
+    aspect-ratio: 3 / 2;
+}
+.singlePhotos img{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.singlePhotos.is-landscape{
+    grid-column: 1 / -1; /* span 2 */
+}
+
+.singlePhotos.is-portrait{
+    grid-column: auto;
+    aspect-ratio: 2 / 3;
+}
+
+.infosContainer{
+    position: absolute;
+    top: 18.8vw;
+    font-family: var(--bodoni);
+    font-size: 1.64vw;
+    display: flex;
+    gap: 8.9vw;
+    left: 5.4vw;
+    z-index: 5;
+}
+
+.infosContainer.fixed {
+    position: fixed;
+    top: 30px;
+    z-index: 5;
+}
+
+
+.infosQuestionContainer{
+    width: 6.3vw;
+}
+.infosQuestion{
+    font-weight: 700;
+    text-transform: capitalize;
+}
+.infosQuestion .slash{
+    font-family: var(--rUltraThink);
+}
+.infosAnswer{
+    font-weight: 0;
+}
+
+/* portfoliosection */
+
+.portfolioSection{
+    height: 100%;
+    width: 100%;
+    position: relative;
+    background: #000;
+}
+
+.titlePortfolio{
+    color: white;
+    font-family: "Radikal W03 Light", sans-serif;
+    top: -2vw;
+}
+
+.subTextPortfolio{
+    font-family: var(--rRegular);
+    color: white!important;
+}
+.subTextPortfolio div,.subTextPortfolio span{
+    font-family: var(--rUltraThink);
+    color: white;
+}
+.subTextPortfolio .subTextLabel{
+    font-family: var(--rRegular);
+}
+.subTextPortfolio a{
+    color: white;
+}
+
+
+
+/* subportfolio albums section */
+.subAlbumsPortfolioSection{
+    height: 100%;
+    /* padding-bottom: var(--paddingBottom); */
+    width: 100%;
+    position: relative;
+    background: #000;
+}
+.backPortfolio{
+    color: white!important;
+    z-index: 500;
+    font-family: var(--rUltraThink);
+    
+}
+.backPortfolio span{
+    font-family: var(--rRegular);
+}
+.backPortfolio a{
+    color: white;
+}
+
+/* subAlbum portfolio photos */
+
+.infosContainerPortfolio{
+    font-family: "Radikal W03 Light", sans-serif;
+    color: white;
+}
+
+
+.imagesSectionsPortfolio{
+    background: #000;
+}
+
+.infosRegularPortfolio{
+    font-family: var(--rRegular);
+}
+
+
+.infosUltraThinPortfolio, .infosRegularPortfolio .slash{
+    font-family: var(--rUltraThink)!important;
+}
+
+
+/* about section */
+.aboutSection, .quoteSection{
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    height: auto;
+    color: rgb(0, 0, 0);
+}
+
+.aboutAllText, .quoteAllText, .privacyAllText{
+    font-family: var(--rUltraThink);
+    position: absolute;
+    left: 5.4vw;
+    top: 10.4vw;
+    width: 28.9vw;
+    font-size: 1.36vw;
+    display: flex;
+    flex-direction: column;
+    gap: 8.7vw;
+}
+.paragraphGap{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+.aboutInfos, .quoteInfos{
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    width: 100%;
+    align-items: stretch;
+    align-self:flex-start;
+    position: relative;
+}
+.aboutTitles, .quoteTitles{
+    font-family: var(--rRegular);
+    text-transform: uppercase;
+    font-size: 2.18vw;
+}
+.titleSlash{
+    font-family: var(--rUltraThink);
+    margin-left: 0.2em;
+}
+.aboutLogos{
+    display: flex;
+    border-bottom: 0.5px solid rgb(0, 0, 0);
+    border-top: 0.5px solid rgb(0, 0, 0);
+    padding: 1.1vw 0vw;
+    justify-content: space-between;
+    align-items: center;
+    height: 5.5vw;
+}
+.aboutLogos svg{
+    mix-blend-mode: normal;
+}
+.aboutLogos svg path{
+    fill: #000 !important;
+    transition: 0.3s ease-in-out;
+}
+.aboutLogos a:hover svg path,
+.aboutLogos a:focus-visible svg path{
+    fill: #CDCDCD !important;
+}
+.aboutSubServices{
+    display: flex;
+    padding: 1.1vw 0vw;
+    gap: 10px;
+    border-top: 0.5px solid rgb(0, 0, 0);
+    border-bottom: 0.5px solid rgb(0, 0, 0);
+}
+.vogue{
+    width: 13.7vw;
+    height: 3.6vw;
+}
+.fearless{
+    width: 5.6vw;
+    height: 5.6vw;
+}
+.mywed{
+    width: 13.7vw;
+    height: 8vw;
+}
+.aboutAndreaImage, .quoteImage{
+    position: fixed;
+    height: 50vw;
+    width: 36.3vw;
+    right: 5.45vw;
+    /* bottom: 0; */
+    top: 11vw;
+    
+    z-index: 2;
+}
+.quoteImage,
+.quoteImageResponsive{
+    opacity: 0;
+    transition: opacity 0.6s ease;
+}
+.quoteImage.is-ready,
+.quoteImageResponsive.is-ready{
+    opacity: 1;
+}
+.aboutAndreaImageResponsive, .quoteImageResponsive{
+    display: none;
+}
+.aboutAndreaImage img, .quoteImage img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 25%;
+}
+
+.preventive{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    border: 1px solid black;
+    background-color: black;
+    height: 4vw;
+    font-size: 1.6vw;
+    cursor: pointer;
+    font-family: var(--rLight);
+    transition: .3s ease-in-out;
+    width: 99.6%;
+}
+
+
+.preventive:hover{
+    background-color: white;
+    color: black;
+}
+.quoteButton.is-temp-hover{
+    background-color: white;
+    color: black;
+    pointer-events: none;
+}
+
+/* quote Section*/
+.quoteAllText{
+    left: 58.15vw;
+    gap: 8.7vw;
+}
+.privacyAllText{
+    left: 58.15vw;
+    transform: translateY(-50%);
+    top: 50%;
+}
+.allInputsContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 2.7vw;
+}
+.singleInputsContainer{
+    display: flex;
+    flex-direction: column;
+}
+.singleInputsContainer label{
+    font-size: 1.1vw;
+    font-family: var(--rLight);
+}
+.singleInputsContainer input{
+    height: 3.1vw;
+    border: 0;
+    border-bottom: 1px solid black;
+    font-size: 1.36vw;
+    font-family: var(--rUltraThink);
+}
+.singleInputsContainer select,
+.singleInputsContainer textarea{
+    height: 3.1vw;
+    border: 0;
+    padding-top: 1vw;
+    border-bottom: 1px solid black;
+    font-size: 1.36vw;
+    font-family: var(--rUltraThink);
+    background: transparent;
+}
+.customSelect{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+.customSelectInput{
+    cursor: pointer;
+    padding-right: 28px;
+}
+.customSelectIcon{
+    position: absolute;
+    right: 4px;
+    top: 10px;
+    font-size: 22px;
+    color: black;
+    pointer-events: none;
+    transition: transform 0.25s ease;
+}
+.customSelect.is-open .customSelectIcon{
+    transform: rotate(180deg);
+}
+.customSelectOptions{
+    height: 0;
+    opacity: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+.customSelect.is-open .customSelectOptions{
+    pointer-events: auto;
+}
+.customSelectOption{
+    width: 100%;
+    height: 46px;
+    text-align: left;
+    border: 0;
+    border-bottom: 1px solid black;
+    background: transparent;
+    font-size: 1.36vw;
+    font-family: var(--rUltraThink);
+    cursor: pointer;
+}
+.customSelectOption.is-selected{
+    color: #00000049;
+    cursor: default;
+}
+.customSelectOption.is-selected:hover{
+    background: transparent;
+}
+.customSelectOption:hover{
+    background: #f1f1f1;
+}
+.singleInputsContainer input:focus,
+.singleInputsContainer select:focus,
+.singleInputsContainer textarea:focus{
+    outline: none;
+    box-shadow: none;
+    border-bottom-color: black;
+}
+.singleInputsContainer textarea{
+    resize: vertical;
+    min-height: 90px;
+}
+.formStatus{
+    font-size: 1.35vw;
+    font-family: var(--rUltraThink);
+    display: block;
+    width: 99.6%;
+    height: 6.9vw;
+    background-color: #000;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -11.5vw;
+    visibility: hidden;
+    transform: translateY(150%);
+    transition: transform 0.35s ease, visibility 0s linear 0.35s;
+    pointer-events: none;
+}
+.formStatus.is-visible{
+    visibility: visible;
+    transform: translateY(0);
+    transition: transform 0.35s ease, visibility 0s linear 0s;
+}
+.is-hidden{
+    display: none;
+}
+.quoteImage{
+    left: 5.4vw;
+}
+.miniFlexContainer{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: .1vw;
+}
+.radioContainer{
+    display: flex;
+    gap: .5vw;
+}
+.privacyInput{
+    margin-bottom: 2.5vw;
+}
+.privacyPage{
+    text-decoration: underline;
+}
+.quoteForm input[type="checkbox"]{
+    accent-color: black;
+    width: 1.35vw;
+    transform: translateY(-1px);
+}
+.quoteForm input[type="radio"]{
+    width: 1.2vw;
+    accent-color: black;
+    transform: translateY(-1px);
+}
+
+
+@media (max-width: 550px) {
+    html.has-smooth, html.has-smooth body{
+        height: auto;
+        overflow: auto;
+    }
+    #smooth-wrapper{
+        position: static;
+        inset: auto;
+        overflow: visible;
+        z-index: auto;
+    }
+    #smooth-content{
+        min-height: auto;
+    }
+    .aboutAndreaImage, .quoteImage{
+        display: none;
+    }
+    .miniGapContainer{
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+    }
+    .aboutAndreaImageResponsive, .quoteImageResponsive{
+        display:initial;
+        width: 100%;
+        height: 455px;
+    }
+    .aboutAndreaImageResponsive img, .quoteImageResponsive img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: 50% 20%;
+    }
+    .aboutAllText,.quoteAllText{
+        top: 106px;
+        left: calc(50% - (80vw + 36px) / 2);
+        width: calc(80vw + 36px);
+        font-size: 18px;
+        gap: 96px;
+    }
+    .singleInputsContainer label{
+        font-size: 16px;
+    }
+    .formStatus{
+        font-size: 3.2vw;
+        height: 15.5vw;
+        transform: translateY(140%);
+        bottom: -12.5vw;
+        
+    }
+    .preventive{
+        margin-bottom: 23vw;
+        font-size: 20px;
+        height: 55px;
+    }
+    .allInputsContainer{
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+    }
+    .customSelectOption{
+        font-size: 20px;
+    }
+    .quoteForm input[type="checkbox"]{
+        width: 17px;
+        transform: translateY(0px);
+    }
+    .quoteForm input[type="radio"]{
+        width: 17px;
+        transform: translateY(-1px);
+    }
+    .radioContainer{
+        gap: 20px;
+    }
+    .singleInputsContainer select,
+    .singleInputsContainer textarea{
+        font-size: 20px;
+    }
+    .singleInputsContainer input{
+        height: 43px;
+        font-size: 20px;
+    }
+    .aboutTitles,.quoteTitles{
+        font-size: 24px;
+    }
+    .aboutLogos{
+        padding: 16px 0px;
+        justify-content: start;
+        gap: 54px;
+    }
+    .aboutInfos, .quoteInfos{
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+    .vogue, .mywed{
+        height: 50px;
+        width: 120px;
+        /* background-color: green; */
+    }
+    .fearless{
+        width: 50px;
+        height: 50px;
+        /* background-color: green; */
+    }
+    .aboutLogos svg g 
+    { mix-blend-mode: normal !important; }
+    .aboutLogos svg path { fill: #000 !important; 
+    }
+    .aboutLogos a:hover svg path,
+    .aboutLogos a:focus-visible svg path{
+        fill: #CDCDCD !important;
+    }
+    .aboutSubServices{
+        display: flex;
+        padding: 16px 0px;
+        gap: 10px;
+        align-self: stretch;
+    }
+    .backToTheTop{
+        display: none;
+    }
+    .singlePhotosGrid {
+        position: absolute;
+        width: calc(80vw + 36px);
+        left: calc(50% - (80vw + 36px) / 2);
+        top: 329px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 3.2vw;
+    }
+    
+    /* Resetta le posizioni specifiche delle immagini */
+    .infosContainer{
+        position: absolute;
+        top: 190px;
+        font-family: var(--bodoni);
+        font-size: 20px;
+        display: flex;
+        gap: 12px;
+        left: calc(50% - (80vw + 36px) / 2);
+        z-index: 5;
+    }
+    .infosContainer.fixed {
+        position: absolute;
+        top: 190px;
+        z-index: 5;
+    }
+    .infosQuestionContainer{
+        width:calc(40vw + 12px);
+    }
+    
+    .back{
+        position: absolute;
+        left: calc(50% - (80vw + 36px) / 2);
+        top: 106px;
+        font-size: 24px;
+        width: calc(80vw + 36px);
+    }
+    .title{
+        position: fixed;
+        top: 25%;
+        width: fit-content;
+        font-size: 12.2vw;
+        left: calc(30.8% - (80vw + 36px) / 2);
+        transform: rotate(-90deg);
+    }
+    /* album */
+    .albumContainer {
+        top: 106px;
+        justify-content: end;
+        left: calc(50% + (80vw + 36px) / 2);
+        transform: translateX(-100%);
+        width: calc(60vw + 24px);
+        gap: 24px;
+    }
+    .albumContainerPortfolioSubAlbum{
+        width: calc(80vw + 36px);
+        top: 156px;
+    }
+    .album a{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 12px;
+    }
+    .album .albumImg {
+        width: 100%;
+        height: 200px;
+        transition: unset;
+        /* filter: grayscale(0); */
+    }
+    .subText {
+        font-size: 20px;
+        color: black;
+        width: calc(60vw + 24px);
+        text-align: start;
+    }
+    .subTextResponsive{
+        width: calc(80vw + 36px);
+    }
+    .subTextPortfolio{
+        font-family: var(--rRegular);
+        color: white!important;
+    }
+    .subTextPortfolio div,.subTextPortfolio span{
+        font-family: var(--rUltraThink);
+        color: white;
+    }
+    .subTextPortfolio a{
+        color: white;
+    }
+    
+    .rolling-text{
+        height: 5vw;
+    }
+    nav{
+        right: auto;
+        left: calc(50% + (80vw + 38px) / 2);
+        top: 11.5vw;
+        transform: rotate(0) translateX(-100%) translateY(0);
+        width: calc(38.5vw + 18px);
+        font-size: 5.09vw;
+        color: white;
+        line-height: 1;
+        overflow: visible;
+        justify-content: space-between;
+    }
+    .logo{
+        position: fixed!important;
+        left: calc(50% - (80vw + 36px) / 2);
+        top: 8.4vw;
+        width: 27vw;
+        height: 9vw;
+    }
+    .logo-absolute .logo{
+        position: fixed !important;
+    }
+    .msResponsive{
+        display: flex;
+        flex-direction: column;
+        text-align: right;
+        gap: 3px;
+    }
+    footer{
+        gap: 15vw;
+        font-size: 16px;
+        bottom: 5vw;
+        width: calc(80vw + 36px);
+        right: 4.99vw;
+        left: calc(50% + (80vw + 36px) / 2);
+        transform:translateX(-100%) translateY(0); 
+    }
+    footer a:hover::after,
+    footer button:hover::after,
+    .hoverBottomText:hover::after {
+        transform: scaleX(0);
+        transform-origin: bottom left;
+    } 
+    
+    .portfolioSpan{
+        font-size: 48px;
+        left: -134px;
+        right: auto;
+        bottom: 60px;
+        opacity: 1;
+        height: fit-content;
+        width: fit-content;
+    }
+    .weddingSpan {
+        bottom: 60px;
+        left: -136px;
+        font-size: 48px;
+        opacity: 1; 
+    }
+    .weddingImg:hover ~ .weddingSpan {
+        bottom: 60px;
+    }
+    .portfolioImg:hover ~ .portfolioSpan {
+        bottom: 60px;
+    }
+    .weddingImg:hover, .portfolioImg:hover {
+        /* filter: grayscale(0%); */
+    }
+    
+    .weddingImg, .portfolioImg {
+        width: calc(60vw + 24px);
+        height: 57.5vw;
+        height: 226px;
+        /* filter: grayscale(0%); */
+        aspect-ratio: 413/520;
+    }
+    
+    .imgContainer{
+        gap: 24px;
+        justify-content: center;
+        align-items: flex-end;
+        width: calc(80vw + 36px);
+        left: calc(50% - (80vw + 36px) / 2);
+        flex-direction: column;
+    }
+    .hundred{
+        left: 30px;
+        font-size: 96px;
+    }
+}
