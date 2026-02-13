@@ -5,8 +5,8 @@ font-weight: 400-900;
 
 @font-face {
     font-family: "Radikal W03 UltraThin";
-    src: url("../../../assets/font/Radikal/Radikal W03 UltraThin/Radikal W03 UltraThin.woff2") format("woff2"),
-    url("../../../assets/font/Radikal/Radikal W03 UltraThin/Radikal W03 UltraThin.woff") format("woff");
+    src: url("../font/Radikal/Radikal W03 UltraThin/Radikal W03 UltraThin.woff2") format("woff2"),
+    url("../font/Radikal/Radikal W03 UltraThin/Radikal W03 UltraThin.woff") format("woff");
     font-weight: 200;
     font-style: normal;
     font-display: block;
@@ -14,8 +14,8 @@ font-weight: 400-900;
 
 @font-face {
     font-family: "Radikal W03 Light";
-    src: url("../../../assets/font/Radikal/Radikal W03 Light/Radikal W03 Light.woff2") format("woff2"),
-    url("../../../assets/font/Radikal/Radikal W03 Light/Radikal W03 Light.woff") format("woff");
+    src: url("../font/Radikal/Radikal W03 Light/Radikal W03 Light.woff2") format("woff2"),
+    url("../font/Radikal/Radikal W03 Light/Radikal W03 Light.woff") format("woff");
     font-weight: 300;
     font-style: normal;
     font-display: block;
@@ -23,8 +23,8 @@ font-weight: 400-900;
 
 @font-face {
     font-family: "Radikal W03 Regular";
-    src: url("../../../assets/font/Radikal/Radikal W03 Regular/Radikal W03 Regular.woff2") format("woff2"),
-    url("../../../assets/font/Radikal/Radikal W03 Regular/Radikal W03 Regular.woff") format("woff");
+    src: url("../font/Radikal/Radikal W03 Regular/Radikal W03 Regular.woff2") format("woff2"),
+    url("../font/Radikal/Radikal W03 Regular/Radikal W03 Regular.woff") format("woff");
     font-weight: 400;
     font-style: normal;
     font-display: block;
